@@ -1,0 +1,7 @@
+*.box
+.vagrant/
+*.retry
+loot/
+*.kirbi
+*.ccache
+*.pfx

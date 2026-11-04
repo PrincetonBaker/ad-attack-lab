@@ -1,0 +1,12 @@
+- name: Create forest
+  microsoft.ad.domain:
+    dns_domain_name: "{{ domain_name }}"
+    domain_netbios_name: "{{ domain_netbios }}"
+    safe_mode_password: "{{ safe_mode_password }}"
+    reboot: true
+- name: Enable advanced audit (Kerberos service ticket ops, cert services)
+  ansible.windows.win_shell: |
+    auditpol /set /subcategory:"Kerberos Service Ticket Operations" /success:enable /failure:enable
+    auditpol /set /subcategory:"Kerberos Authentication Service" /success:enable /failure:enable
+    auditpol /set /subcategory:"Directory Service Changes" /success:enable
+# TODO: install Sysmon with a known config (e.g., SwiftOnSecurity / olafhartong modular)

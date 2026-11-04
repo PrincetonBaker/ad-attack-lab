@@ -1,0 +1,11 @@
+all:
+  vars:
+    ansible_connection: winrm
+    ansible_winrm_transport: ntlm
+    ansible_winrm_server_cert_validation: ignore
+    ansible_user: vagrant
+    ansible_password: vagrant
+  children:
+    dc:      { hosts: { dc01: { ansible_host: 192.168.56.10 } } }
+    ca:      { hosts: { ca01: { ansible_host: 192.168.56.11 } } }
+    members: { hosts: { ws01: { ansible_host: 192.168.56.20 } } }

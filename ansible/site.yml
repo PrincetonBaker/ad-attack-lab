@@ -1,0 +1,8 @@
+- hosts: dc
+  roles: [dc]
+- hosts: ca:members
+  roles: [members]
+- hosts: ca
+  roles: [adcs]
+- hosts: dc
+  roles: [misconfigs]

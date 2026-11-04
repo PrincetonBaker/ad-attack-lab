@@ -1,0 +1,11 @@
+# Lab-only credentials. Intentionally weak. Never reuse.
+domain_name: corp.lab
+domain_netbios: CORP
+dc_ip: 192.168.56.10
+safe_mode_password: "LabOnly!2026"
+domain_admin_password: "LabOnly!2026"
+kerberoast_user: svc_sql
+kerberoast_password: "Summer2026!"   # deliberately crackable
+kerberoast_spn: "MSSQLSvc/sql01.corp.lab:1433"
+esc1_template: VulnUser
+unconstrained_host: WS01

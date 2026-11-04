@@ -1,0 +1,13 @@
+- name: Kerberoastable service account (weak password + SPN)
+  microsoft.ad.user:
+    name: "{{ kerberoast_user }}"
+    password: "{{ kerberoast_password }}"
+    password_never_expires: true
+    spn:
+      set: ["{{ kerberoast_spn }}"]
+    state: present
+- name: Unconstrained delegation on WS01
+  microsoft.ad.computer:
+    name: "{{ unconstrained_host }}"
+    trusted_for_delegation: true
+    state: present
